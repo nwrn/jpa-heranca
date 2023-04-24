@@ -11,10 +11,13 @@ import java.time.LocalDate;
 @DiscriminatorColumn(name = "TP_PESSOA")
 public abstract class Pessoa {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PESSOA")
-    @SequenceGenerator(name = "SQ_PESSOA", sequenceName = "SQ_PESSOA", initialValue = 1)
+    @SequenceGenerator(
+            name = "SQ_PESSOA",
+            sequenceName = "SQ_PESSOA",
+            initialValue = 1
+    )
     @Column(name = "ID_PESSOA")
     private
     Long id;
