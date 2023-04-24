@@ -1,12 +1,11 @@
 package br.com.fiap.pessoa.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
+@DiscriminatorValue("PJ")
 public class PJ extends Pessoa {
 
     @Column(name = "NR_CNPJ")
