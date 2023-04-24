@@ -1,8 +1,13 @@
 package br.com.fiap;
 
+import br.com.fiap.pessoa.model.PF;
+import br.com.fiap.pessoa.model.PJ;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+
+import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Main {
 
@@ -11,7 +16,17 @@ public class Main {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("maria-db");
         EntityManager manager = factory.createEntityManager();
 
+        PF bene = new PF();
+        bene.setNome("Benefrancis do Nascimento").setNascimento(LocalDate.of(1977, 3, 8));
+        bene.setCPF("21312165464").setRG("132132185");
 
+        PJ sl = new PJ();
+        sl.setCNPJ("2131654654654").setNome("Super Lojas Benezinho").setNascimento(LocalDate.now().minusYears(5));
+        sl.setInscricaoEstadual("213132132");
+
+        manager.getTransaction().begin();
+        Arrays.asList(bene, sl).forEach(manager::persist);
+        manager.getTransaction().commit();
     }
 
 }
