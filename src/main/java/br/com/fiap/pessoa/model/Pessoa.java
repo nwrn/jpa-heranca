@@ -11,7 +11,10 @@ import java.time.LocalDate;
 public abstract class Pessoa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PESSOA")
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "SQ_PESSOA"
+    )
     @SequenceGenerator(
             name = "SQ_PESSOA",
             sequenceName = "SQ_PESSOA",

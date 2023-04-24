@@ -7,7 +7,6 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "TB_PJ")
 public class PJ extends Pessoa {
 
     @Column(name = "NR_CNPJ")
