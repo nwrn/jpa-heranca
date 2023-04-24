@@ -20,30 +20,14 @@ public class Main {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("maria-db");
         EntityManager manager = factory.createEntityManager();
 
-
-        Pais br = new Pais();
-        br.setNome("Brasil");
-
-        Estado uf = new Estado();
-        uf.setNome("São Paulo").setSigla("SP").setPais(br);
-
-
-        Cidade sp = new Cidade();
-        sp.setEstado(uf).setNome("São Paulo");
-
-        Endereco end = new Endereco();
-        end.setCidade(sp).setCEP("06086120").setLogradouro("Rua do Benezinho").setNumero("505").setComplemento("AP");
-
-
         PF bene = new PF();
         bene.setNome("Benefrancis do Nascimento").setNascimento(LocalDate.of(1977, 3, 8));
         bene.setCPF("21312165464").setRG("132132185");
-        bene.setEndereco(end);
 
         PJ sl = new PJ();
         sl.setCNPJ("2131654654654").setNome("Super Lojas Benezinho").setNascimento(LocalDate.now().minusYears(5));
         sl.setInscricaoEstadual("213132132");
-        sl.setEndereco(end);
+
 
         manager.getTransaction().begin();
         Arrays.asList(bene, sl).forEach(manager::persist);
