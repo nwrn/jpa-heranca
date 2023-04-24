@@ -1,5 +1,6 @@
 package br.com.fiap.pessoa.model;
 
+import br.com.fiap.endereco.model.Endereco;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -17,8 +18,8 @@ public class PF extends Pessoa {
     public PF() {
     }
 
-    public PF(Long id, String nome, LocalDate nascimento, String CPF, String RG) {
-        super(id, nome, nascimento);
+    public PF(Long id, String nome, LocalDate nascimento, Endereco endereco, String CPF, String RG) {
+        super(id, nome, nascimento, endereco);
         this.CPF = CPF;
         this.RG = RG;
     }

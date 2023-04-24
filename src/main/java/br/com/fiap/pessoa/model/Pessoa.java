@@ -1,5 +1,6 @@
 package br.com.fiap.pessoa.model;
 
+import br.com.fiap.endereco.model.Endereco;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -31,13 +32,23 @@ public abstract class Pessoa {
     private
     LocalDate nascimento;
 
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(
+            name = "ID_ENDERECO",
+            referencedColumnName = "ID_ENDERECO",
+            foreignKey = @ForeignKey(name = "FK_PESSOA_ENDERECO", value = ConstraintMode.CONSTRAINT))
+    private Endereco endereco;
+
+
     public Pessoa() {
     }
 
-    public Pessoa(Long id, String nome, LocalDate nascimento) {
+    public Pessoa(Long id, String nome, LocalDate nascimento, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.nascimento = nascimento;
+        this.endereco = endereco;
     }
 
     public Long getId() {
@@ -67,6 +78,14 @@ public abstract class Pessoa {
         return this;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public Pessoa setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+        return this;
+    }
 
     @Override
     public String toString() {
@@ -74,6 +93,7 @@ public abstract class Pessoa {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", nascimento=" + nascimento +
+                ", endereco=" + endereco +
                 '}';
     }
 }
