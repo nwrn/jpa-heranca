@@ -1,12 +1,12 @@
 package br.com.fiap.pessoa.model;
 
-public class PF extends Pessoa{
+public class PF extends Pessoa {
 
 
-    String CPF;
+    private String CPF;
 
 
-    String RG;
+    private String RG;
 
 
 }
