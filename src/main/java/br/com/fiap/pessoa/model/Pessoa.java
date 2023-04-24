@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name = "TB_PESSOA")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @NoArgsConstructor
 @AllArgsConstructor
 @DiscriminatorColumn(name = "TP_PESSOA")

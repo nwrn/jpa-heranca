@@ -9,8 +9,6 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "TB_PF")
-@Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
 @AllArgsConstructor
 @DiscriminatorValue("PF")
