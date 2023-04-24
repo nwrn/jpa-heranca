@@ -1,13 +1,13 @@
 package br.com.fiap.pessoa.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "TB_PJ")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue("PJ")
 public class PJ extends Pessoa {
 
     @Column(name = "NR_CNPJ")

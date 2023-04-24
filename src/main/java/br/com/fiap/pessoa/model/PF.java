@@ -6,8 +6,6 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "TB_PF")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue("PF")
 public class PF extends Pessoa {
 
     @Column(name = "NR_CPF")
