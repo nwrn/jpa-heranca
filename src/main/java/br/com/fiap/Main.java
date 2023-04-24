@@ -20,7 +20,6 @@ public class Main {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("maria-db");
         EntityManager manager = factory.createEntityManager();
 
-
         Pais br = new Pais();
         br.setNome("Brasil");
 
