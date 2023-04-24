@@ -10,11 +10,9 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "TB_PESSOA")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @NoArgsConstructor
 @AllArgsConstructor
-@DiscriminatorColumn(name = "TP_PESSOA")
 public abstract class Pessoa {
 
     @Id
