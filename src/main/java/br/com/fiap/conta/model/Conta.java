@@ -1,17 +1,40 @@
 package br.com.fiap.conta.model;
 
 import br.com.fiap.pessoa.model.Pessoa;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "TB_CONTA")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "TP_CONTA")
 public abstract class Conta {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_CONTA")
+    @SequenceGenerator(name = "SQ_CONTA", sequenceName = "SQ_CONTA")
+    @Column(name = "ID_CONTA")
     private Long id;
 
+    @Column(name = "NR_CONTA")
     private int numero;
 
-    private Agencia agencia;
-
+    @Column(name = "SALDO")
     private double saldo;
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(
+            name = "ID_AGENCIA",
+            referencedColumnName = "ID_AGENCIA",
+            foreignKey = @ForeignKey(name = "FK_AGENCIA_CONTA")
+    )
+    private Agencia agencia;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(
+            name = "ID_PESSOA",
+            referencedColumnName = "ID_PESSOA",
+            foreignKey = @ForeignKey(name = "FK_PESSOA_CONTA")
+    )
     private Pessoa titular;
 
     public Conta() {

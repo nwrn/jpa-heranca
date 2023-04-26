@@ -1,5 +1,9 @@
 package br.com.fiap;
 
+import br.com.fiap.conta.model.Agencia;
+import br.com.fiap.conta.model.Conta;
+import br.com.fiap.conta.model.ContaCorrente;
+import br.com.fiap.conta.model.ContaPoupanca;
 import br.com.fiap.endereco.model.Cidade;
 import br.com.fiap.endereco.model.Endereco;
 import br.com.fiap.endereco.model.Estado;
@@ -11,7 +15,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.MonthDay;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,15 +52,38 @@ public class Main {
         sl.setInscricaoEstadual("213132132");
         sl.setEndereco(end);
 
+        Agencia agPaulista = new Agencia();
+        agPaulista.setNumero(1);
+
+
+        ContaCorrente ccBene = new ContaCorrente();
+        ccBene.setLimite(1000);
+        ccBene.setSaldo(30000).setTitular(bene).setNumero(8818).setAgencia(agPaulista);
+
+        ContaPoupanca cpBene = new ContaPoupanca();
+        cpBene.setAniversario(MonthDay.now().getDayOfMonth())
+                .setAgencia(agPaulista)
+                .setSaldo(1_000_000)
+                .setNumero(1008818)
+                .setTitular(bene);
+
+        ContaCorrente ccSLB = new ContaCorrente();
+        ccSLB.setLimite(1_000_000);
+        ccSLB.setSaldo(35_000_000).setTitular(sl).setAgencia(agPaulista).setNumero(8819);
+
         manager.getTransaction().begin();
 
         List<Pessoa> pessoas = Arrays.asList(bene, sl);
 
         pessoas.forEach(manager::persist);
 
+        List<Conta> contas = Arrays.asList(ccBene,cpBene, ccSLB);
+
+        contas.forEach(manager::persist);
+
         manager.getTransaction().commit();
 
-        pessoas.forEach(System.out::println);
+        contas.forEach(System.out::println);
     }
 
 }

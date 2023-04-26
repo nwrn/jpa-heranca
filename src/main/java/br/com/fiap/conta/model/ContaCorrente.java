@@ -1,7 +1,13 @@
 package br.com.fiap.conta.model;
 
 import br.com.fiap.pessoa.model.Pessoa;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "TB_CONTA_CORRENTE")
+@DiscriminatorValue(value = "CC")
 public class ContaCorrente extends Conta {
     private double limite;
 
