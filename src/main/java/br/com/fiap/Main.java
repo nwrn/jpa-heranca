@@ -6,12 +6,14 @@ import br.com.fiap.endereco.model.Estado;
 import br.com.fiap.endereco.model.Pais;
 import br.com.fiap.pessoa.model.PF;
 import br.com.fiap.pessoa.model.PJ;
+import br.com.fiap.pessoa.model.Pessoa;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -45,8 +47,14 @@ public class Main {
         sl.setEndereco(end);
 
         manager.getTransaction().begin();
-        Arrays.asList(bene, sl).forEach(manager::persist);
+
+        List<Pessoa> pessoas = Arrays.asList(bene, sl);
+
+        pessoas.forEach(manager::persist);
+
         manager.getTransaction().commit();
+
+        pessoas.forEach(System.out::println);
     }
 
 }
