@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@DiscriminatorValue(value = "CC")
+@Table(name = "TB_CONTA_CORRENTE")
 public class ContaCorrente extends Conta {
     private double limite;
 

@@ -4,9 +4,7 @@ import br.com.fiap.pessoa.model.Pessoa;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TB_CONTA")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TP_CONTA")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Conta {
 
     @Id

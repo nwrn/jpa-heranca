@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@DiscriminatorValue(value = "CP")
+@Table(name = "TB_CONTA_POUPANCA")
 public class ContaPoupanca extends Conta {
 
     //  DayOfWeek aniversario;
