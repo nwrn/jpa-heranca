@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TB_CONTA_POUPANCA")
 @DiscriminatorValue(value = "CP")
 public class ContaPoupanca extends Conta {
 
