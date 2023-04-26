@@ -34,7 +34,6 @@ public class Main {
         Estado uf = new Estado();
         uf.setNome("São Paulo").setSigla("SP").setPais(br);
 
-
         Cidade sp = new Cidade();
         sp.setEstado(uf).setNome("São Paulo");
 
