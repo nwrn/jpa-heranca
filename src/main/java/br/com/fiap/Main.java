@@ -18,6 +18,7 @@ public class Main {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("maria-db");
         EntityManager manager = factory.createEntityManager();
 
+
         PF bene = new PF();
         bene.setRG("13213213");
         bene.setCPF("21321321");
